@@ -12,11 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.teemola.demo.config.exception.CommonResponseException;
 import org.teemola.demo.entity.BaseResponse;
+import org.teemola.demo.entity.User;
 import org.teemola.demo.service.LoginService;
 import org.teemola.demo.utils.CommonUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -33,8 +35,12 @@ public class LoginController {
      */
     @RequestMapping(value = "auth",method = RequestMethod.POST , consumes = "application/json")
     @ResponseBody
-    public BaseResponse authlogin( @RequestBody Map<String,String> map){
+    public BaseResponse authlogin( @RequestBody Map<String,Object> map){
 
+//        Object obj = map.get("user");
+        JSONObject jsonObject = (JSONObject) JSONObject.toJSON(map);
+//        mapUser us = (User) jsonObject.getObject("user",User.class);
+        List<User> usl = (List<User>) jsonObject.getObject("users",User.class);
         try {
             CommonUtil.hasAllRequired(map, "username, password");
             return loginService.authLogin(map);

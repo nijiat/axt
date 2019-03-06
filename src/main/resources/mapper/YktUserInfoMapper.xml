@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.teemola.demo.dao.YktUserInfoMapper">
+  <resultMap id="BaseResultMap" type="org.teemola.demo.entity.YktUserInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="workid" jdbcType="VARCHAR" property="workid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="imagepath" jdbcType="VARCHAR" property="imagepath" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="schoolid" jdbcType="INTEGER" property="schoolid" />
+    <result column="dutyid" jdbcType="INTEGER" property="dutyid" />
+    <result column="genderid" jdbcType="INTEGER" property="genderid" />
+    <result column="nationid" jdbcType="INTEGER" property="nationid" />
+    <result column="politicalid" jdbcType="INTEGER" property="politicalid" />
+    <result column="religionid" jdbcType="INTEGER" property="religionid" />
+    <result column="departmentid" jdbcType="INTEGER" property="departmentid" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="postalcode" jdbcType="INTEGER" property="postalcode" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, workid, username, name, imagepath, password, schoolid, dutyid, genderid, nationid, 
+    politicalid, religionid, departmentid, email, phone, address, postalcode, createtime, 
+    updatetime, is_deleted, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from yktuserinfo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from yktuserinfo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.teemola.demo.entity.YktUserInfo">
+    insert into yktuserinfo (id, workid, username, 
+      name, imagepath, password, 
+      schoolid, dutyid, genderid, 
+      nationid, politicalid, religionid, 
+      departmentid, email, phone, 
+      address, postalcode, createtime, 
+      updatetime, is_deleted, remark
+      )
+    values (#{id,jdbcType=INTEGER}, #{workid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{imagepath,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{schoolid,jdbcType=INTEGER}, #{dutyid,jdbcType=INTEGER}, #{genderid,jdbcType=INTEGER}, 
+      #{nationid,jdbcType=INTEGER}, #{politicalid,jdbcType=INTEGER}, #{religionid,jdbcType=INTEGER}, 
+      #{departmentid,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{postalcode,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=BIT}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.teemola.demo.entity.YktUserInfo">
+    insert into yktuserinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="workid != null">
+        workid,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="imagepath != null">
+        imagepath,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="schoolid != null">
+        schoolid,
+      </if>
+      <if test="dutyid != null">
+        dutyid,
+      </if>
+      <if test="genderid != null">
+        genderid,
+      </if>
+      <if test="nationid != null">
+        nationid,
+      </if>
+      <if test="politicalid != null">
+        politicalid,
+      </if>
+      <if test="religionid != null">
+        religionid,
+      </if>
+      <if test="departmentid != null">
+        departmentid,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="postalcode != null">
+        postalcode,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="workid != null">
+        #{workid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="imagepath != null">
+        #{imagepath,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolid != null">
+        #{schoolid,jdbcType=INTEGER},
+      </if>
+      <if test="dutyid != null">
+        #{dutyid,jdbcType=INTEGER},
+      </if>
+      <if test="genderid != null">
+        #{genderid,jdbcType=INTEGER},
+      </if>
+      <if test="nationid != null">
+        #{nationid,jdbcType=INTEGER},
+      </if>
+      <if test="politicalid != null">
+        #{politicalid,jdbcType=INTEGER},
+      </if>
+      <if test="religionid != null">
+        #{religionid,jdbcType=INTEGER},
+      </if>
+      <if test="departmentid != null">
+        #{departmentid,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="postalcode != null">
+        #{postalcode,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.teemola.demo.entity.YktUserInfo">
+    update yktuserinfo
+    <set>
+      <if test="workid != null">
+        workid = #{workid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="imagepath != null">
+        imagepath = #{imagepath,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolid != null">
+        schoolid = #{schoolid,jdbcType=INTEGER},
+      </if>
+      <if test="dutyid != null">
+        dutyid = #{dutyid,jdbcType=INTEGER},
+      </if>
+      <if test="genderid != null">
+        genderid = #{genderid,jdbcType=INTEGER},
+      </if>
+      <if test="nationid != null">
+        nationid = #{nationid,jdbcType=INTEGER},
+      </if>
+      <if test="politicalid != null">
+        politicalid = #{politicalid,jdbcType=INTEGER},
+      </if>
+      <if test="religionid != null">
+        religionid = #{religionid,jdbcType=INTEGER},
+      </if>
+      <if test="departmentid != null">
+        departmentid = #{departmentid,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="postalcode != null">
+        postalcode = #{postalcode,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.teemola.demo.entity.YktUserInfo">
+    update yktuserinfo
+    set workid = #{workid,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      imagepath = #{imagepath,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      schoolid = #{schoolid,jdbcType=INTEGER},
+      dutyid = #{dutyid,jdbcType=INTEGER},
+      genderid = #{genderid,jdbcType=INTEGER},
+      nationid = #{nationid,jdbcType=INTEGER},
+      politicalid = #{politicalid,jdbcType=INTEGER},
+      religionid = #{religionid,jdbcType=INTEGER},
+      departmentid = #{departmentid,jdbcType=INTEGER},
+      email = #{email,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      postalcode = #{postalcode,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=BIT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

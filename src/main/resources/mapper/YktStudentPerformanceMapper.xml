@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.teemola.demo.dao.YktStudentPerformanceMapper">
+  <resultMap id="BaseResultMap" type="org.teemola.demo.entity.YktStudentPerformance">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="handsup_time" jdbcType="TIMESTAMP" property="handsupTime" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="is_checked" jdbcType="VARCHAR" property="isChecked" />
+    <result column="access_by_teacher" jdbcType="VARCHAR" property="accessByTeacher" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
+    <result column="creclassnum" jdbcType="INTEGER" property="creclassnum" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, handsup_time, userid, is_checked, access_by_teacher, createtime, updatetime, 
+    is_deleted, creclassnum, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from yktstudentperformance
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from yktstudentperformance
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.teemola.demo.entity.YktStudentPerformance">
+    insert into yktstudentperformance (id, handsup_time, userid, 
+      is_checked, access_by_teacher, createtime, 
+      updatetime, is_deleted, creclassnum, 
+      remark)
+    values (#{id,jdbcType=INTEGER}, #{handsupTime,jdbcType=TIMESTAMP}, #{userid,jdbcType=INTEGER}, 
+      #{isChecked,jdbcType=VARCHAR}, #{accessByTeacher,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=BIT}, #{creclassnum,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.teemola.demo.entity.YktStudentPerformance">
+    insert into yktstudentperformance
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="handsupTime != null">
+        handsup_time,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="isChecked != null">
+        is_checked,
+      </if>
+      <if test="accessByTeacher != null">
+        access_by_teacher,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="creclassnum != null">
+        creclassnum,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="handsupTime != null">
+        #{handsupTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="isChecked != null">
+        #{isChecked,jdbcType=VARCHAR},
+      </if>
+      <if test="accessByTeacher != null">
+        #{accessByTeacher,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="creclassnum != null">
+        #{creclassnum,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.teemola.demo.entity.YktStudentPerformance">
+    update yktstudentperformance
+    <set>
+      <if test="handsupTime != null">
+        handsup_time = #{handsupTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="isChecked != null">
+        is_checked = #{isChecked,jdbcType=VARCHAR},
+      </if>
+      <if test="accessByTeacher != null">
+        access_by_teacher = #{accessByTeacher,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="creclassnum != null">
+        creclassnum = #{creclassnum,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.teemola.demo.entity.YktStudentPerformance">
+    update yktstudentperformance
+    set handsup_time = #{handsupTime,jdbcType=TIMESTAMP},
+      userid = #{userid,jdbcType=INTEGER},
+      is_checked = #{isChecked,jdbcType=VARCHAR},
+      access_by_teacher = #{accessByTeacher,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=BIT},
+      creclassnum = #{creclassnum,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.teemola.demo.dao.YktDepartementInfoMapper">
+  <resultMap id="BaseResultMap" type="org.teemola.demo.entity.YktDepartementInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="departmentid" jdbcType="INTEGER" property="departmentid" />
+    <result column="schoolid" jdbcType="INTEGER" property="schoolid" />
+    <result column="parentid" jdbcType="INTEGER" property="parentid" />
+    <result column="is_leaf" jdbcType="BIT" property="isLeaf" />
+    <result column="childnum" jdbcType="INTEGER" property="childnum" />
+    <result column="theorder" jdbcType="SMALLINT" property="theorder" />
+    <result column="thelevel" jdbcType="SMALLINT" property="thelevel" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, departmentid, schoolid, parentid, is_leaf, childnum, theorder, thelevel, 
+    updatetime, createtime, is_deleted, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from yktdepartementinfo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from yktdepartementinfo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.teemola.demo.entity.YktDepartementInfo">
+    insert into yktdepartementinfo (id, name, departmentid, 
+      schoolid, parentid, is_leaf, 
+      childnum, theorder, thelevel, 
+      updatetime, createtime, is_deleted, 
+      remark)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{departmentid,jdbcType=INTEGER}, 
+      #{schoolid,jdbcType=INTEGER}, #{parentid,jdbcType=INTEGER}, #{isLeaf,jdbcType=BIT}, 
+      #{childnum,jdbcType=INTEGER}, #{theorder,jdbcType=SMALLINT}, #{thelevel,jdbcType=SMALLINT}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{createtime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=BIT}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.teemola.demo.entity.YktDepartementInfo">
+    insert into yktdepartementinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="departmentid != null">
+        departmentid,
+      </if>
+      <if test="schoolid != null">
+        schoolid,
+      </if>
+      <if test="parentid != null">
+        parentid,
+      </if>
+      <if test="isLeaf != null">
+        is_leaf,
+      </if>
+      <if test="childnum != null">
+        childnum,
+      </if>
+      <if test="theorder != null">
+        theorder,
+      </if>
+      <if test="thelevel != null">
+        thelevel,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentid != null">
+        #{departmentid,jdbcType=INTEGER},
+      </if>
+      <if test="schoolid != null">
+        #{schoolid,jdbcType=INTEGER},
+      </if>
+      <if test="parentid != null">
+        #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="isLeaf != null">
+        #{isLeaf,jdbcType=BIT},
+      </if>
+      <if test="childnum != null">
+        #{childnum,jdbcType=INTEGER},
+      </if>
+      <if test="theorder != null">
+        #{theorder,jdbcType=SMALLINT},
+      </if>
+      <if test="thelevel != null">
+        #{thelevel,jdbcType=SMALLINT},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.teemola.demo.entity.YktDepartementInfo">
+    update yktdepartementinfo
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentid != null">
+        departmentid = #{departmentid,jdbcType=INTEGER},
+      </if>
+      <if test="schoolid != null">
+        schoolid = #{schoolid,jdbcType=INTEGER},
+      </if>
+      <if test="parentid != null">
+        parentid = #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="isLeaf != null">
+        is_leaf = #{isLeaf,jdbcType=BIT},
+      </if>
+      <if test="childnum != null">
+        childnum = #{childnum,jdbcType=INTEGER},
+      </if>
+      <if test="theorder != null">
+        theorder = #{theorder,jdbcType=SMALLINT},
+      </if>
+      <if test="thelevel != null">
+        thelevel = #{thelevel,jdbcType=SMALLINT},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.teemola.demo.entity.YktDepartementInfo">
+    update yktdepartementinfo
+    set name = #{name,jdbcType=VARCHAR},
+      departmentid = #{departmentid,jdbcType=INTEGER},
+      schoolid = #{schoolid,jdbcType=INTEGER},
+      parentid = #{parentid,jdbcType=INTEGER},
+      is_leaf = #{isLeaf,jdbcType=BIT},
+      childnum = #{childnum,jdbcType=INTEGER},
+      theorder = #{theorder,jdbcType=SMALLINT},
+      thelevel = #{thelevel,jdbcType=SMALLINT},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=BIT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

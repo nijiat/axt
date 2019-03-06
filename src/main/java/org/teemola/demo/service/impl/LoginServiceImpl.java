@@ -36,9 +36,9 @@ public class LoginServiceImpl implements LoginService {
       * 登录表单提交
       */
     @Override
-    public BaseResponse authLogin(Map<String,String> map) {
-        String username = map.get("username");
-        String password = map.get("password");
+    public BaseResponse authLogin(Map<String,Object> map) {
+        String username = (String)map.get("username");
+        String password = (String)map.get("password");
         BaseResponse baseResponse = new BaseResponse();
         // shiro
         Subject currentUser = SecurityUtils.getSubject();

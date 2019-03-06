@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.teemola.demo.dao.YktCountryMajorInfoMapper">
+  <resultMap id="BaseResultMap" type="org.teemola.demo.entity.YktCountryMajorInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="parentid" jdbcType="INTEGER" property="parentid" />
+    <result column="childnum" jdbcType="INTEGER" property="childnum" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
+    <result column="is_leaf" jdbcType="BIT" property="isLeaf" />
+    <result column="theorder" jdbcType="SMALLINT" property="theorder" />
+    <result column="thelevel" jdbcType="SMALLINT" property="thelevel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, parentid, childnum, createtime, updatetime, is_deleted, is_leaf, theorder, 
+    thelevel
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from yktcountrymajorinfo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from yktcountrymajorinfo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.teemola.demo.entity.YktCountryMajorInfo">
+    insert into yktcountrymajorinfo (id, name, parentid, 
+      childnum, createtime, updatetime, 
+      is_deleted, is_leaf, theorder, 
+      thelevel)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{parentid,jdbcType=INTEGER}, 
+      #{childnum,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{isDeleted,jdbcType=BIT}, #{isLeaf,jdbcType=BIT}, #{theorder,jdbcType=SMALLINT}, 
+      #{thelevel,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="org.teemola.demo.entity.YktCountryMajorInfo">
+    insert into yktcountrymajorinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="parentid != null">
+        parentid,
+      </if>
+      <if test="childnum != null">
+        childnum,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="isLeaf != null">
+        is_leaf,
+      </if>
+      <if test="theorder != null">
+        theorder,
+      </if>
+      <if test="thelevel != null">
+        thelevel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null">
+        #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="childnum != null">
+        #{childnum,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="isLeaf != null">
+        #{isLeaf,jdbcType=BIT},
+      </if>
+      <if test="theorder != null">
+        #{theorder,jdbcType=SMALLINT},
+      </if>
+      <if test="thelevel != null">
+        #{thelevel,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.teemola.demo.entity.YktCountryMajorInfo">
+    update yktcountrymajorinfo
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null">
+        parentid = #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="childnum != null">
+        childnum = #{childnum,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="isLeaf != null">
+        is_leaf = #{isLeaf,jdbcType=BIT},
+      </if>
+      <if test="theorder != null">
+        theorder = #{theorder,jdbcType=SMALLINT},
+      </if>
+      <if test="thelevel != null">
+        thelevel = #{thelevel,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.teemola.demo.entity.YktCountryMajorInfo">
+    update yktcountrymajorinfo
+    set name = #{name,jdbcType=VARCHAR},
+      parentid = #{parentid,jdbcType=INTEGER},
+      childnum = #{childnum,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=BIT},
+      is_leaf = #{isLeaf,jdbcType=BIT},
+      theorder = #{theorder,jdbcType=SMALLINT},
+      thelevel = #{thelevel,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

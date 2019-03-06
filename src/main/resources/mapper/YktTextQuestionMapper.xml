@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.teemola.demo.dao.YktTextQuestionMapper">
+  <resultMap id="BaseResultMap" type="org.teemola.demo.entity.YktTextQuestion">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="chapterid" jdbcType="INTEGER" property="chapterid" />
+    <result column="questiontypeid" jdbcType="INTEGER" property="questiontypeid" />
+    <result column="schoolid" jdbcType="INTEGER" property="schoolid" />
+    <result column="majorid" jdbcType="INTEGER" property="majorid" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="level" jdbcType="SMALLINT" property="level" />
+    <result column="key" jdbcType="VARCHAR" property="key" />
+    <result column="detial" jdbcType="VARCHAR" property="detial" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, chapterid, questiontypeid, schoolid, majorid, content, userid, level, key, detial, 
+    createtime, updatetime, is_deleted, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ykttextquestion
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ykttextquestion
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.teemola.demo.entity.YktTextQuestion">
+    insert into ykttextquestion (id, chapterid, questiontypeid, 
+      schoolid, majorid, content, 
+      userid, level, key, 
+      detial, createtime, updatetime, 
+      is_deleted, remark)
+    values (#{id,jdbcType=INTEGER}, #{chapterid,jdbcType=INTEGER}, #{questiontypeid,jdbcType=INTEGER}, 
+      #{schoolid,jdbcType=INTEGER}, #{majorid,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
+      #{userid,jdbcType=INTEGER}, #{level,jdbcType=SMALLINT}, #{key,jdbcType=VARCHAR}, 
+      #{detial,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{isDeleted,jdbcType=BIT}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.teemola.demo.entity.YktTextQuestion">
+    insert into ykttextquestion
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="chapterid != null">
+        chapterid,
+      </if>
+      <if test="questiontypeid != null">
+        questiontypeid,
+      </if>
+      <if test="schoolid != null">
+        schoolid,
+      </if>
+      <if test="majorid != null">
+        majorid,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="key != null">
+        key,
+      </if>
+      <if test="detial != null">
+        detial,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="chapterid != null">
+        #{chapterid,jdbcType=INTEGER},
+      </if>
+      <if test="questiontypeid != null">
+        #{questiontypeid,jdbcType=INTEGER},
+      </if>
+      <if test="schoolid != null">
+        #{schoolid,jdbcType=INTEGER},
+      </if>
+      <if test="majorid != null">
+        #{majorid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=SMALLINT},
+      </if>
+      <if test="key != null">
+        #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="detial != null">
+        #{detial,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.teemola.demo.entity.YktTextQuestion">
+    update ykttextquestion
+    <set>
+      <if test="chapterid != null">
+        chapterid = #{chapterid,jdbcType=INTEGER},
+      </if>
+      <if test="questiontypeid != null">
+        questiontypeid = #{questiontypeid,jdbcType=INTEGER},
+      </if>
+      <if test="schoolid != null">
+        schoolid = #{schoolid,jdbcType=INTEGER},
+      </if>
+      <if test="majorid != null">
+        majorid = #{majorid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=SMALLINT},
+      </if>
+      <if test="key != null">
+        key = #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="detial != null">
+        detial = #{detial,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.teemola.demo.entity.YktTextQuestion">
+    update ykttextquestion
+    set chapterid = #{chapterid,jdbcType=INTEGER},
+      questiontypeid = #{questiontypeid,jdbcType=INTEGER},
+      schoolid = #{schoolid,jdbcType=INTEGER},
+      majorid = #{majorid,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      userid = #{userid,jdbcType=INTEGER},
+      level = #{level,jdbcType=SMALLINT},
+      key = #{key,jdbcType=VARCHAR},
+      detial = #{detial,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=BIT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

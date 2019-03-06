@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.teemola.demo.dao.YktSinglePersQuestionRelationMapper">
+  <resultMap id="BaseResultMap" type="org.teemola.demo.entity.YktSinglePersQuestionRelation">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="examid" jdbcType="INTEGER" property="examid" />
+    <result column="key" jdbcType="VARCHAR" property="key" />
+    <result column="questionid" jdbcType="INTEGER" property="questionid" />
+    <result column="goal" jdbcType="INTEGER" property="goal" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, examid, key, questionid, goal, updatetime, createtime, is_deleted, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from yktsinglepersquestionrelation
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from yktsinglepersquestionrelation
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.teemola.demo.entity.YktSinglePersQuestionRelation">
+    insert into yktsinglepersquestionrelation (id, examid, key, 
+      questionid, goal, updatetime, 
+      createtime, is_deleted, remark
+      )
+    values (#{id,jdbcType=INTEGER}, #{examid,jdbcType=INTEGER}, #{key,jdbcType=VARCHAR}, 
+      #{questionid,jdbcType=INTEGER}, #{goal,jdbcType=INTEGER}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.teemola.demo.entity.YktSinglePersQuestionRelation">
+    insert into yktsinglepersquestionrelation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="examid != null">
+        examid,
+      </if>
+      <if test="key != null">
+        key,
+      </if>
+      <if test="questionid != null">
+        questionid,
+      </if>
+      <if test="goal != null">
+        goal,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="examid != null">
+        #{examid,jdbcType=INTEGER},
+      </if>
+      <if test="key != null">
+        #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="questionid != null">
+        #{questionid,jdbcType=INTEGER},
+      </if>
+      <if test="goal != null">
+        #{goal,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.teemola.demo.entity.YktSinglePersQuestionRelation">
+    update yktsinglepersquestionrelation
+    <set>
+      <if test="examid != null">
+        examid = #{examid,jdbcType=INTEGER},
+      </if>
+      <if test="key != null">
+        key = #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="questionid != null">
+        questionid = #{questionid,jdbcType=INTEGER},
+      </if>
+      <if test="goal != null">
+        goal = #{goal,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.teemola.demo.entity.YktSinglePersQuestionRelation">
+    update yktsinglepersquestionrelation
+    set examid = #{examid,jdbcType=INTEGER},
+      key = #{key,jdbcType=VARCHAR},
+      questionid = #{questionid,jdbcType=INTEGER},
+      goal = #{goal,jdbcType=INTEGER},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

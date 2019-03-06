@@ -35,7 +35,7 @@ public class CommonUtil {
      *
      * @param requiredColumns 必填的参数字段名称 逗号隔开 比如"userId, name, telephone"
      */
-    public static void  hasAllRequired(Map<String,String> map, String requiredColumns) {
+    public static void  hasAllRequired(Map<String,Object> map, String requiredColumns) {
         if(!StringTools.isNullOrEmpty(requiredColumns)){
             //验证字段非空
             String[] columns = requiredColumns.split(",");
