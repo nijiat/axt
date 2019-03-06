@@ -67,13 +67,10 @@ public class LoginServiceImpl implements LoginService {
     public BaseResponse getUserPermission() {
         // 从session中获取用户信息: username
         Session session = SecurityUtils.getSubject().getSession();
-        JSONObject userinfo = (JSONObject) session.getAttribute(Constants.SESSION_USER_INFO);
-        System.out.println(userinfo);
-        JSONObject info = new JSONObject();
-        String username = userinfo.getString("username");
+        User userinfo = (User)session.getAttribute(Constants.SESSION_USER_INFO);
+        String username = userinfo.getName();
         List<Permission>permissionList = permissionService.getUserPermission(username);
         session.setAttribute(Constants.SESSION_USER_PERMISSION, permissionList);
-        info.put(Constants.SESSION_USER_PERMISSION, permissionList);
         return new BaseResponse(permissionList);
     }
 
