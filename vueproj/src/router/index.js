@@ -51,6 +51,16 @@ export const asyncRouterMap = [
 
 export default new Router({
     // mode: 'history', //后端支持可开
-    scrollBehavior: () => ({ y: 0 }),
+    // scrollBehavior: () => ({ y: 0 }),
+    scrollBehavior(to, from, savedPos) {
+        if (savedPos) {
+            return savedPos
+        } else {
+            return {
+                x: 0,
+                y: 0
+            }
+        }
+    }
     routes: constantRouterMap
 })
