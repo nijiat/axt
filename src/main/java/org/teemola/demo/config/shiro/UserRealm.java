@@ -74,7 +74,7 @@ public class UserRealm extends AuthorizingRealm {
 
         // 设置 session信息 (现不使用，改为cookie存放？？)
         user.setPassword("");
-         SecurityUtils.getSubject().getSession().setAttribute(Constants.SESSION_USER_INFO, user);
+        SecurityUtils.getSubject().getSession().setAttribute(Constants.SESSION_USER_INFO, user);
         return authenticationInfo;
     }
 }
