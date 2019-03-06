@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.teemola.demo.dao.LoginMapper">
+
+    <select id="getUser" resultType="org.teemola.demo.entity.User">
+        select
+        u.id,
+        u.name,
+        u.password
+        from
+          sys_user u
+        where u.name = #{username}
+        and u.password = #{password}
+        and u.delete_status = 0
+    </select>
+
+</mapper>

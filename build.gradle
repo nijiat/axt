@@ -1,0 +1,66 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.1.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        // mybatis-generator 插件路径
+        classpath "gradle.plugin.com.arenagod.gradle:mybatis-generator-plugin:1.4"
+    }
+}
+
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+//引入 mybatis-generator 插件
+apply plugin: "com.arenagod.gradle.MybatisGenerator"
+
+
+group = 'org.teemola'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2')
+    runtimeOnly('mysql:mysql-connector-java')
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    //mybatis-generator core 包
+    compile group: 'org.mybatis.generator', name: 'mybatis-generator-core', version:'1.3.2'
+    // 引入 shiro, shiro-ehcache
+    compile 'org.apache.shiro:shiro-spring-boot-web-starter:1.4.0'
+    // import lombok plugin
+    compileOnly 'org.projectlombok:lombok:1.18.6'
+    annotationProcessor 'org.projectlombok:lombok:1.18.6'
+    // 引入 阿里-fastjson
+    compile group: 'com.alibaba', name: 'fastjson', version: '1.1.25'
+    // 引入 腾讯 COS
+    compile group: 'com.tencentcloudapi', name: 'tencentcloud-sdk-java', version: '3.0.50'
+    // 引入 swagger2
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+    // 引入springdata
+
+}
+
+configurations {
+    mybatisGenerator
+}
+
+mybatisGenerator {
+    verbose = true
+    configFile = '~/Projects/prac/SpringBootDemo/src/main/resources/generator.xml'
+}
