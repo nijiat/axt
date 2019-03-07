@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.teemola.demo.dao.YktTeachingPlanInfoMapper">
+  <resultMap id="BaseResultMap" type="org.teemola.demo.entity.YktTeachingPlanInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="teachingplanid" jdbcType="INTEGER" property="teachingplanid" />
+    <result column="courseidcountry" jdbcType="INTEGER" property="courseidcountry" />
+    <result column="classnum" jdbcType="INTEGER" property="classnum" />
+    <result column="computernum" jdbcType="INTEGER" property="computernum" />
+    <result column="testnum" jdbcType="INTEGER" property="testnum" />
+    <result column="typecourse" jdbcType="VARCHAR" property="typecourse" />
+    <result column="teacherid" jdbcType="VARCHAR" property="teacherid" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, teachingplanid, courseidcountry, classnum, computernum, testnum, typecourse, 
+    teacherid, createtime, updatetime, is_deleted, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from yktteachingplaninfo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from yktteachingplaninfo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.teemola.demo.entity.YktTeachingPlanInfo">
+    insert into yktteachingplaninfo (id, teachingplanid, courseidcountry, 
+      classnum, computernum, testnum, 
+      typecourse, teacherid, createtime, 
+      updatetime, is_deleted, remark
+      )
+    values (#{id,jdbcType=INTEGER}, #{teachingplanid,jdbcType=INTEGER}, #{courseidcountry,jdbcType=INTEGER}, 
+      #{classnum,jdbcType=INTEGER}, #{computernum,jdbcType=INTEGER}, #{testnum,jdbcType=INTEGER}, 
+      #{typecourse,jdbcType=VARCHAR}, #{teacherid,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=BIT}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.teemola.demo.entity.YktTeachingPlanInfo">
+    insert into yktteachingplaninfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="teachingplanid != null">
+        teachingplanid,
+      </if>
+      <if test="courseidcountry != null">
+        courseidcountry,
+      </if>
+      <if test="classnum != null">
+        classnum,
+      </if>
+      <if test="computernum != null">
+        computernum,
+      </if>
+      <if test="testnum != null">
+        testnum,
+      </if>
+      <if test="typecourse != null">
+        typecourse,
+      </if>
+      <if test="teacherid != null">
+        teacherid,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="teachingplanid != null">
+        #{teachingplanid,jdbcType=INTEGER},
+      </if>
+      <if test="courseidcountry != null">
+        #{courseidcountry,jdbcType=INTEGER},
+      </if>
+      <if test="classnum != null">
+        #{classnum,jdbcType=INTEGER},
+      </if>
+      <if test="computernum != null">
+        #{computernum,jdbcType=INTEGER},
+      </if>
+      <if test="testnum != null">
+        #{testnum,jdbcType=INTEGER},
+      </if>
+      <if test="typecourse != null">
+        #{typecourse,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherid != null">
+        #{teacherid,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.teemola.demo.entity.YktTeachingPlanInfo">
+    update yktteachingplaninfo
+    <set>
+      <if test="teachingplanid != null">
+        teachingplanid = #{teachingplanid,jdbcType=INTEGER},
+      </if>
+      <if test="courseidcountry != null">
+        courseidcountry = #{courseidcountry,jdbcType=INTEGER},
+      </if>
+      <if test="classnum != null">
+        classnum = #{classnum,jdbcType=INTEGER},
+      </if>
+      <if test="computernum != null">
+        computernum = #{computernum,jdbcType=INTEGER},
+      </if>
+      <if test="testnum != null">
+        testnum = #{testnum,jdbcType=INTEGER},
+      </if>
+      <if test="typecourse != null">
+        typecourse = #{typecourse,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherid != null">
+        teacherid = #{teacherid,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.teemola.demo.entity.YktTeachingPlanInfo">
+    update yktteachingplaninfo
+    set teachingplanid = #{teachingplanid,jdbcType=INTEGER},
+      courseidcountry = #{courseidcountry,jdbcType=INTEGER},
+      classnum = #{classnum,jdbcType=INTEGER},
+      computernum = #{computernum,jdbcType=INTEGER},
+      testnum = #{testnum,jdbcType=INTEGER},
+      typecourse = #{typecourse,jdbcType=VARCHAR},
+      teacherid = #{teacherid,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=BIT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

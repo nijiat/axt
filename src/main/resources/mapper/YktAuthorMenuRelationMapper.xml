@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.teemola.demo.dao.YktAuthorMenuRelationMapper">
+  <resultMap id="BaseResultMap" type="org.teemola.demo.entity.YktAuthorMenuRelation">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="authorizationid" jdbcType="INTEGER" property="authorizationid" />
+    <result column="menuid" jdbcType="INTEGER" property="menuid" />
+    <result column="visible" jdbcType="BIT" property="visible" />
+    <result column="add" jdbcType="BIT" property="add" />
+    <result column="delete" jdbcType="BIT" property="delete" />
+    <result column="modify" jdbcType="BIT" property="modify" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, authorizationid, menuid, visible, add, delete, modify, remark, createtime, updatetime, 
+    is_deleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from yktauthormenurelation
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from yktauthormenurelation
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.teemola.demo.entity.YktAuthorMenuRelation">
+    insert into yktauthormenurelation (id, authorizationid, menuid, 
+      visible, add, delete, modify, 
+      remark, createtime, updatetime, 
+      is_deleted)
+    values (#{id,jdbcType=INTEGER}, #{authorizationid,jdbcType=INTEGER}, #{menuid,jdbcType=INTEGER}, 
+      #{visible,jdbcType=BIT}, #{add,jdbcType=BIT}, #{delete,jdbcType=BIT}, #{modify,jdbcType=BIT}, 
+      #{remark,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{isDeleted,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="org.teemola.demo.entity.YktAuthorMenuRelation">
+    insert into yktauthormenurelation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="authorizationid != null">
+        authorizationid,
+      </if>
+      <if test="menuid != null">
+        menuid,
+      </if>
+      <if test="visible != null">
+        visible,
+      </if>
+      <if test="add != null">
+        add,
+      </if>
+      <if test="delete != null">
+        delete,
+      </if>
+      <if test="modify != null">
+        modify,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="authorizationid != null">
+        #{authorizationid,jdbcType=INTEGER},
+      </if>
+      <if test="menuid != null">
+        #{menuid,jdbcType=INTEGER},
+      </if>
+      <if test="visible != null">
+        #{visible,jdbcType=BIT},
+      </if>
+      <if test="add != null">
+        #{add,jdbcType=BIT},
+      </if>
+      <if test="delete != null">
+        #{delete,jdbcType=BIT},
+      </if>
+      <if test="modify != null">
+        #{modify,jdbcType=BIT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.teemola.demo.entity.YktAuthorMenuRelation">
+    update yktauthormenurelation
+    <set>
+      <if test="authorizationid != null">
+        authorizationid = #{authorizationid,jdbcType=INTEGER},
+      </if>
+      <if test="menuid != null">
+        menuid = #{menuid,jdbcType=INTEGER},
+      </if>
+      <if test="visible != null">
+        visible = #{visible,jdbcType=BIT},
+      </if>
+      <if test="add != null">
+        add = #{add,jdbcType=BIT},
+      </if>
+      <if test="delete != null">
+        delete = #{delete,jdbcType=BIT},
+      </if>
+      <if test="modify != null">
+        modify = #{modify,jdbcType=BIT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.teemola.demo.entity.YktAuthorMenuRelation">
+    update yktauthormenurelation
+    set authorizationid = #{authorizationid,jdbcType=INTEGER},
+      menuid = #{menuid,jdbcType=INTEGER},
+      visible = #{visible,jdbcType=BIT},
+      add = #{add,jdbcType=BIT},
+      delete = #{delete,jdbcType=BIT},
+      modify = #{modify,jdbcType=BIT},
+      remark = #{remark,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

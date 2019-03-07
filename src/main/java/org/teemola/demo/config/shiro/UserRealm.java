@@ -34,9 +34,9 @@ public class UserRealm extends AuthorizingRealm {
     @Override
     @SuppressWarnings("unchecked") /*抑制 对 未检查作业 的警告 */
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        // Session session = SecurityUtils.getSubject().getSession();
+        //Session session = SecurityUtils.getSubject().getSession();
         // 查询用户权限
-        // JSONObject permissionInfo = (JSONObject) session.getAttribute(Constants.SESSION_USER_PERMISSION);
+        //JSONObject permissionInfo = (JSONObject) session.getAttribute(Constants.SESSION_USER_PERMISSION);
 
         //为当前用户设置角色和权限
         JsonObject user = (JsonObject) getAvailablePrincipal(principals);

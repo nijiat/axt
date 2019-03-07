@@ -14,7 +14,7 @@ public interface LoginService {
     /**
      * 登录表单提交
      */
-    BaseResponse authLogin(Map<String,String>map);
+    BaseResponse authLogin(Map<String,Object>map);
 
     /**
      * 根据用户名和密码查询对应的用户
