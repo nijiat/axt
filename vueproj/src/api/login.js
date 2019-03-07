@@ -4,7 +4,7 @@ export function login(username, password) {
     return request({
         url: '/api/login/auth',
         method: 'post',
-        data: {
+        data: {   // located in body --post
             username,
             password
         }
@@ -16,7 +16,7 @@ export function getInfo(token) {
     return request({
         url: '/api/login/info',
         method: 'get',
-        params: { token }
+        params: { token }   // located in url --get
     })
 }
 

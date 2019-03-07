@@ -61,6 +61,6 @@ export default new Router({
                 y: 0
             }
         }
-    }
+    },
     routes: constantRouterMap
 })
