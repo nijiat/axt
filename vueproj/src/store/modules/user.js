@@ -3,7 +3,7 @@ import { getToken, setToken, removeToken } from '@/utils/auth'
 
 const user = {
     state: {
-        token: getToken(),
+        token: getToken(),   // 从cookie中获取token
         name: '',
         avatar: '',
         roles: []
@@ -34,9 +34,8 @@ const user = {
                     const token = data.info.token
                     setToken(token)  // cookies 处的token
                     commit('SET_TOKEN', token)
-                    resolve()   // 作用？？
+                    resolve()
                 }).catch(error => {
-                    console.log("exist error!!!!")
                     reject(error)
                 })
             })
@@ -46,24 +45,22 @@ const user = {
         GetInfo({ commit, state }) {
             return new Promise((resolve, reject) => {
                 getInfo(state.token).then(response => {
-                    const data = response.data.info.userPermission
-                    console.log("data:")
-                    console.log(data)
-                    if (data.roleId && data.roleName.length > 0) { // 验证返回的roles是否是一个非空数组
-                        commit('SET_ROLES', data.roleName)
+                    const data = response.data
+                    if (data.roles.length > 0) { // 验证返回的roles是否是一个非空数组
+                        commit('SET_ROLES', data.roles)
                     } else {
                         reject('getInfo: roles must be a non-null array !')
                     }
                     commit('SET_NAME', data.username)
                     commit('SET_AVATAR', data.avatar)
-                    resolve(data)
+                    resolve(response)
                 }).catch(error => {
                     reject(error)
                 })
             })
         },
 
-        // 登出
+        // 登出 -- 清除cookies和store中的token, 并重置角色列表
         LogOut({ commit, state }) {
             return new Promise((resolve, reject) => {
                 logout(state.token).then(() => {
@@ -77,7 +74,7 @@ const user = {
             })
         },
 
-        // 前端 登出
+        // 前端 登出 -- 清除cookies和store中的token
         FedLogOut({ commit }) {
             return new Promise(resolve => {
                 commit('SET_TOKEN', '')
