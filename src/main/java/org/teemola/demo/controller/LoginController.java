@@ -38,9 +38,9 @@ public class LoginController {
     public BaseResponse authlogin( @RequestBody Map<String,Object> map){
 
 //        Object obj = map.get("user");
-        JSONObject jsonObject = (JSONObject) JSONObject.toJSON(map);
+//        JSONObject jsonObject = (JSONObject) JSONObject.toJSON(map);
 //        mapUser us = (User) jsonObject.getObject("user",User.class);
-        List<User> usl = (List<User>) jsonObject.getObject("users",User.class);
+
         try {
             CommonUtil.hasAllRequired(map, "username, password");
             return loginService.authLogin(map);

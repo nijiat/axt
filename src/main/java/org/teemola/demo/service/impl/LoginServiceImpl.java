@@ -9,9 +9,11 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.teemola.demo.dao.LoginMapper;
+import org.teemola.demo.dao.YktUserInfoMapper;
 import org.teemola.demo.entity.BaseResponse;
 import org.teemola.demo.entity.Permission;
 import org.teemola.demo.entity.User;
+import org.teemola.demo.entity.YktUserInfo;
 import org.teemola.demo.service.LoginService;
 import org.teemola.demo.service.PermissionService;
 import org.teemola.demo.util.CommonUtil;
@@ -19,6 +21,7 @@ import org.teemola.demo.util.constants.Constants;
 import org.teemola.demo.utils.error.MyError;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,7 +30,7 @@ import java.util.Map;
 public class LoginServiceImpl implements LoginService {
 
     @Autowired
-    private LoginMapper loginMapper;
+    private YktUserInfoMapper yktUserInfoMapper;
     @Autowired
     private PermissionService permissionService;
 
@@ -44,20 +47,22 @@ public class LoginServiceImpl implements LoginService {
         Subject currentUser = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         try{
+            Map<String,Object> tokenMap = new HashMap<String, Object>();
+            tokenMap.put("token",token);
             currentUser.login(token); // 身份认证交给shiro处理
-            baseResponse.setData(token);
+            baseResponse.setData(tokenMap);
         }catch (AuthenticationException e){
             baseResponse = new MyError().InvalidPassword();
         }
         return baseResponse;
-    }
+    }   
 
     /**
      * 根据用户名和密码查询对应的用户
      */
     @Override
-    public User getUser(String username, String password) {
-        return loginMapper.getUser(username, password);
+    public YktUserInfo getUser(String username, String password) {
+        return yktUserInfoMapper.getUser(username, password);
     }
 
     /**

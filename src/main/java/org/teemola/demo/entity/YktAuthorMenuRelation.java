@@ -18,6 +18,8 @@ public class YktAuthorMenuRelation implements Serializable {
 
     private Boolean modify;
 
+    private String permission;
+
     private String remark;
 
     private Date createtime;
@@ -82,6 +84,14 @@ public class YktAuthorMenuRelation implements Serializable {
 
     public void setModify(Boolean modify) {
         this.modify = modify;
+    }
+
+    public String getPermission() {
+        return permission;
+    }
+
+    public void setPermission(String permission) {
+        this.permission = permission == null ? null : permission.trim();
     }
 
     public String getRemark() {

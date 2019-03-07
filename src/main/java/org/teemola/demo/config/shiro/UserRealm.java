@@ -11,7 +11,10 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.teemola.demo.dao.YktUserInfoMapper;
 import org.teemola.demo.entity.User;
+import org.teemola.demo.entity.YktUserInfo;
 import org.teemola.demo.service.LoginService;
 import org.teemola.demo.util.constants.Constants;
 
@@ -56,17 +59,23 @@ public class UserRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+        Logger logger = LoggerFactory.getLogger(UserRealm.class);
+        logger.info(String.format("<INFO> %s","asd"));
         String username = (String)token.getPrincipal();
         String password = new String((char[])token.getCredentials()); // ?????
-        User user = loginService.getUser(username, password);
-        System.out.println(user.getName());
+//        get data from database
+        //User user = loginService.getUser(username, password);
+////        System.out.println(user.getName());
+        YktUserInfo user = loginService.getUser(username, password);
+
+        logger.info(String.format("<INFO> %s",user.getImagepath()));
         if(user == null){
             throw new UnknownAccountException(); /*Thrown when attempting to authenticate with a principal that doesn't exist in the system*/
         }
 
         //交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                user.getName(),
+                user.getUsername(),
                 user.getPassword(),
 //                ByteSource.Util.bytes("salt"),
                 getName()

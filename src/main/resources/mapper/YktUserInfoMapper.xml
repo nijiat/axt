@@ -280,4 +280,13 @@
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+  <!--get user by  password and username -->
+  <select id="getUser" resultType="org.teemola.demo.entity.YktUserInfo">
+    Select
+    *
+    from yktuserinfo
+    where username = #{username} and password = #{password}
+  </select>
 </mapper>

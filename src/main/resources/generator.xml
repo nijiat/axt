@@ -190,12 +190,6 @@
                enableUpdateByExample="false" >
         </table>
 
-        <table schema="ykt4" tableName="yktexamtypeinfo"
-               domainObjectName="YktExamTypeInfo" enableCountByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false" >
-        </table>
-
         <table schema="ykt4" tableName="yktgenderinfo"
                domainObjectName="YktGenderInfo" enableCountByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"

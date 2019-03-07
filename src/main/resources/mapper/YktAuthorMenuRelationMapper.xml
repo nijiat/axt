@@ -9,14 +9,15 @@
     <result column="add" jdbcType="BIT" property="add" />
     <result column="delete" jdbcType="BIT" property="delete" />
     <result column="modify" jdbcType="BIT" property="modify" />
+    <result column="permission" jdbcType="VARCHAR" property="permission" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
     <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
     <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, authorizationid, menuid, visible, add, delete, modify, remark, createtime, updatetime, 
-    is_deleted
+    id, authorizationid, menuid, visible, add, delete, modify, permission, remark, createtime, 
+    updatetime, is_deleted
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -31,12 +32,12 @@
   <insert id="insert" parameterType="org.teemola.demo.entity.YktAuthorMenuRelation">
     insert into yktauthormenurelation (id, authorizationid, menuid, 
       visible, add, delete, modify, 
-      remark, createtime, updatetime, 
-      is_deleted)
+      permission, remark, createtime, 
+      updatetime, is_deleted)
     values (#{id,jdbcType=INTEGER}, #{authorizationid,jdbcType=INTEGER}, #{menuid,jdbcType=INTEGER}, 
       #{visible,jdbcType=BIT}, #{add,jdbcType=BIT}, #{delete,jdbcType=BIT}, #{modify,jdbcType=BIT}, 
-      #{remark,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
-      #{isDeleted,jdbcType=BIT})
+      #{permission,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="org.teemola.demo.entity.YktAuthorMenuRelation">
     insert into yktauthormenurelation
@@ -61,6 +62,9 @@
       </if>
       <if test="modify != null">
         modify,
+      </if>
+      <if test="permission != null">
+        permission,
       </if>
       <if test="remark != null">
         remark,
@@ -97,6 +101,9 @@
       <if test="modify != null">
         #{modify,jdbcType=BIT},
       </if>
+      <if test="permission != null">
+        #{permission,jdbcType=VARCHAR},
+      </if>
       <if test="remark != null">
         #{remark,jdbcType=VARCHAR},
       </if>
@@ -132,6 +139,9 @@
       <if test="modify != null">
         modify = #{modify,jdbcType=BIT},
       </if>
+      <if test="permission != null">
+        permission = #{permission,jdbcType=VARCHAR},
+      </if>
       <if test="remark != null">
         remark = #{remark,jdbcType=VARCHAR},
       </if>
@@ -155,6 +165,7 @@
       add = #{add,jdbcType=BIT},
       delete = #{delete,jdbcType=BIT},
       modify = #{modify,jdbcType=BIT},
+      permission = #{permission,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR},
       createtime = #{createtime,jdbcType=TIMESTAMP},
       updatetime = #{updatetime,jdbcType=TIMESTAMP},
